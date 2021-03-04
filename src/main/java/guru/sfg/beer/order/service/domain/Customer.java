@@ -27,6 +27,7 @@ import javax.persistence.OneToMany;
 import java.sql.Timestamp;
 import java.util.Set;
 import java.util.UUID;
+import org.hibernate.annotations.Type;
 
 /**
  * Created by jt on 2019-01-26.
@@ -48,7 +49,8 @@ public class Customer extends BaseEntity {
 
     private String customerName;
 
-    @Column(length = 36, columnDefinition = "varchar")
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(length = 36, columnDefinition = "varchar(36)")
     private UUID apiKey;
 
     @OneToMany(mappedBy = "customer")
